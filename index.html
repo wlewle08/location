@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Hubungi Saya melalui WhatsApp</title>
+  
+</head>
+<body>
+    <h1>Hubungi Saya melalui WhatsApp</h1>
+    <form>
+        <label for="phone">Nomor Telepon:</label>
+        <input type="text" id="phone" placeholder="Masukkan nomor telepon Anda"><br><br>
+        
+        <label for="message">Pesan:</label>
+        <textarea id="message" placeholder="Masukkan pesan Anda"></textarea><br><br>
+        
+        <button type="button" onclick="redirectToWhatsApp()">Kirim Pesan</button>
+    </form>
+
+
+
+    <script>
+        // function redirectToWhatsApp() {
+        //     var phoneNumber = document.getElementById("phone").value;
+        //     var message = document.getElementById("message").value;
+            
+        //     if (phoneNumber && message) {
+        //         var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+        //         window.location.href = url;
+        //     }
+        // }
+
+        // Mendeteksi saat halaman dimuat
+        window.addEventListener("load", function() {
+        // Meminta izin akses lokasi saat halaman dimuat
+            
+         getLocation();
+        });
+
+         function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+
+        // if (navigator.permissions) {
+        //     navigator.permissions.query({ name: 'geolocation' }).then(function(permissionStatus) {
+        //     if (permissionStatus.state === 'granted') {
+        //         // Izin akses lokasi telah diberikan
+        //         getLocation();
+        //     } else if (permissionStatus.state === 'prompt') {
+        //         // Izin akses lokasi belum ditentukan, menampilkan pesan untuk mengizinkan aplikasi
+        //         showLocationPermissionMessage();
+        //     }
+        //     });
+        // } else if (navigator.geolocation) {
+        //     // Navigator.permissions tidak didukung, meminta izin akses lokasi secara langsung
+        //     navigator.geolocation.getCurrentPosition(getLocation, handleLocationError);
+        // } else {
+        //     console.log("Geolocation is not supported by this browser.");
+        // }
+        // });
+
+        // // Fungsi untuk mendapatkan lokasi saat izin telah diberikan
+        // function getLocation() {
+        // navigator.geolocation.getCurrentPosition(successCallback, handleLocationError);
+        // }
+
+        // // Fungsi untuk menangani kesalahan lokasi
+        // function handleLocationError(error) {
+        // switch (error.code) {
+        //     case error.PERMISSION_DENIED:
+        //     console.log("User denied the request for Geolocation.");
+        //     break;
+        //     case error.POSITION_UNAVAILABLE:
+        //     console.log("Location information is unavailable.");
+        //     break;
+        //     case error.TIMEOUT:
+        //     console.log("The request to get user location timed out.");
+        //     break;
+        //     case error.UNKNOWN_ERROR:
+        //     console.log("An unknown error occurred.");
+        //     break;
+        // }
+        // }
+
+        // // Fungsi untuk menampilkan pesan permintaan izin akses lokasi
+        // function showLocationPermissionMessage() {
+        // // Tampilkan pesan kepada pengguna untuk meminta izin akses lokasi
+        // var permissionMessage = "Aplikasi ini membutuhkan akses lokasi untuk berfungsi dengan baik. Mohon izinkan akses lokasi untuk melanjutkan.";
+        // // Gantikan dengan logika atau tampilan yang sesuai dengan aplikasi Anda
+        // console.log(permissionMessage);
+        // }
+
+
+    </script>
+
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hubungi Saya melalui WhatsApp</title>
+</head>
+<body>
+    <h1>Hubungi Saya melalui WhatsApp</h1>
+    <form>
+        <label for="phone">Nomor Telepon:</label>
+        <input type="text" id="phone" placeholder="Masukkan nomor telepon Anda"><br><br>
+        
+        <label for="message">Pesan:</label>
+        <textarea id="message" placeholder="Masukkan pesan Anda"></textarea><br><br>
+        
+        <button type="button" onclick="redirectToWhatsApp()">Kirim Pesan</button>
+    </form>
+
+    <p id="location"></p>
+
+    <script>
+        window.addEventListener("load", function() {
+            getLocation();
+        });
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var locationElement = document.getElementById("location");
+            locationElement.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function redirectToWhatsApp() {
+            var phoneNumber = document.getElementById("phone").value;
+            var message = document.getElementById("message").value;
+            
+            if (phoneNumber && message) {
+                var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>
